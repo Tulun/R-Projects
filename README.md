@@ -1,0 +1,1 @@
+Various R scripts learning the fundamentals of Economic Analysis, as well as other data analysis I might try to do in R.
