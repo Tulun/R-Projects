@@ -57,3 +57,4 @@ plotFun(A * (L ^ 0.7) * (K ^ 0.3) ~ L & K, A = 5, filled = FALSE, xlim = range(0
 # We use the same command that we used for the isoquants, but now indicate that we
 # want a surface plotted (surface = TRUE):
 
+plotFun(A * (L ^ 0.7) * (K ^ 0.3) ~ L & K, A = 5, filled = FALSE, xlim = range(0, 21), ylim = range(0, 100), surface = TRUE)
