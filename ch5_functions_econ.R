@@ -213,3 +213,12 @@ display(mod2)
 
 xyplot(l.CO2pc ~ l.GNIpc, data = CO2, type = c("r", "p"))
 xyplot(l.CO2pc ~ l.GNIpc, data = CO2, type = c('p', 'smooth'))
+
+# The scatter and line of fit has a more even distribution of points and the fit is more
+# satisfactory (Fig. 5.13 left). There appears to be a bit of curvature which is captured
+# by the loess smoother (Fig. 5.13 right).
+# The residuals are now more evenly distributed though there is a hint of curvature
+# in the residuals versus fitted plot (Fig. 5.14).
+
+xyplot(resid(mod2) ~ fitted(mod2), type = c("p", "smooth"))
+histogram(~resid(mod2), fit = "normal")
