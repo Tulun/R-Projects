@@ -38,4 +38,48 @@ pD2 <- makeFun(( aD - (bD * q) ) / cD ~ q, aD = 150, bD = 6, cD = 8)
 
 plotFun(pD2, xlim = range(0, 30), ylim = range(5, 20), lwd = 1.5, add = TRUE)
 
+# Supply
+
+pS <- makeFun((aS + (bS * q))/cS ~ q, aS = 12, bS = 2, cS = 5)
+
+plotFun(pD, xlim = range(0, 30), ylim = range(5, 20), lty = 2)
+plotFun(pD2, xlim = range(0, 30), ylim = range(5, 20), lwd = 1.5, add = TRUE)
+plotFun(pS, xlim = range(0, 30), ylim = range(5, 20), add = TRUE)
+
+# Equilibrium
+# 
+# At the equilibrium, D = S, or D − S = 0.
+# We use the findZeros function and apply it to the excess demand:
+
+q.equil <- findZeros(((aD - (bD * q))/cD) - ((aS + (bS * q))/cS) ~ q,
+                     aD = 125, bD = 6, cD = 8, aS = 12, bS = 2, cS = 5)
+q.equil
+
+pD(q.equil)
+
+# Fish Data
+
+# We then plot price against quantity in a scatter plot (Fig. 4.4 left). To plot price
+# against quantity we use a function or command that is in the mosaic package,
+# xyplot. We also plot price against stormy (stormy weather) (Fig. 4.4 right). We
+# ‘jitter’ stormy, i.e. add some random noise to help distinguish different observations;
+# we ask for type = p for points and = r for regression line.
+
+fish <- read.delim('fish.out')
+
+xyplot(price ~ qty, data=fish)
+
+xyplot(price ~ jitter(stormy), data = fish, type = c('p', 'r'))
+
+# Since both supply and demand were changing, we cannot “identify” a supply
+# or demand curve only from the scatter plot (Fig. 4.4, left). Graddy (2006) found
+# that stormy weather shifted the supply curve; so we can identify the demand curve
+# using that information (Fig. 4.4, right). In other words, stormy weather serves as an
+# ‘instrumental variable’. Using only ordinary least squares, the estimated price elasticity
+# of demand for fish was about −0.5; using the instrumental variables estimator,
+# the estimated price elasticity was more than double that. The theoretical framework
+# of demand and supply helps us see beyond the data, and using the econometric
+# technique of instrumental variables helps us estimate the elasticity. We can also use
+# supply and demand as a framework to think about price movements informally, as
+# in the following case of the price of crude oil. We discuss elasticity in Chap. 5.
 
